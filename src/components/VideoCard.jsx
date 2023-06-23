@@ -1,39 +1,43 @@
 import React from "react";
-import { formatAgo } from "../utill/date";
 import { useNavigate } from "react-router-dom";
+import { formatAgo } from "../util/date";
 
-export default function VideoCard({ video }) {
+export default function VideoCard({ video, type }) {
   const { thumbnails, title, channelTitle, publishedAt } = video.snippet;
 
-  const navigate = useNavigate();
+  const navigate = useNavigate("");
   const isRelated = type === "related";
 
   return (
     <li
       className={
-        isRelated ? "flex gap-x-4 mb4 cursor-pointer" : " cursor-pointer"
+        isRelated ? "flex gap-x-4 mb-4 cursor-pointer" : "cursor-pointer"
       }
       onClick={() => {
         navigate(`/videos/watch/${video.id}`, { state: { video } });
       }}
     >
       <img
-        className=" w-full rounded-xl"
+        className={isRelated ? "w-40 rounded-lg" : "w-full rounded-lg"}
         src={thumbnails.medium.url}
-        alr={title}
-      ></img>
+        alt={title}
+      />
       <div>
         <p
           className={
             isRelated
-              ? " text-base mt-0 leading-4 line-clamp-2"
-              : " text-lg font-semibold leading-7 mb-2 line-clamp-2"
+              ? "text-base mt-0 mb-1 leading-4 line-clamp-2"
+              : "text-lg mt-3 mb-1 leading-6 line-clamp-2"
           }
         >
           {title}
         </p>
-        <p className=" text-sm opacity-70">{channelTitle}</p>
-        <p className=" text-xs opacity-70">{formatAgo(publishedAt, "ko")}</p>
+        <p className={isRelated ? "text-xs opacity-80" : "text-sm opacity-80"}>
+          {channelTitle}
+        </p>
+        <p className={isRelated ? "text-xs opacity-50" : "text-sm opacity-50"}>
+          {formatAgo(publishedAt, "ko")}
+        </p>
       </div>
     </li>
   );
