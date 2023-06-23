@@ -36,7 +36,7 @@ export default function SearchHeader() {
 
           <form
             onSubmit={handleSubmit}
-            className="flex justify-between border border-zinc-600 rounded-full pl-6 w-1/2 max-w-2xl"
+            className="flex justify-between border border-zinc-600 rounded-full pl-6 w-1/2 max-w-2xl "
           >
             <input
               type="text"
@@ -45,16 +45,16 @@ export default function SearchHeader() {
               onChange={(e) => setText(e.target.value)}
               className="bg-zinc-900 text-zinc-400 outline-0 w-full"
             />
-            <button className="p-3 border border-zinc-600 px-6 bg-zinc-700 rounded-r-full">
+            <button className="border-l border-zinc-600 px-6 bg-zinc-700 rounded-r-full ">
               <BsSearch />
             </button>
           </form>
 
-          <div className=" hidden sm:flex items-center">
-            <BsThreeDotsVertical className=" text-2xl" />
-            <button className="flex items-center border border-zinc-600 py-1.5 px-2 rounded-full text-sky-500 ml-4 hover:bg-sky-950">
+          <div className="hidden sm:flex items-center">
+            <BsThreeDotsVertical className="text-lg" />
+            <button className=" flex items-center border border-zinc-600 rounded-full p-2 text-sky-500 ml-4 hover:bg-sky-950">
               <BsPersonCircle />
-              <span className=" text-sm pl-2.5">로그인</span>
+              <span className="text-sm pl-2">로그인</span>
             </button>
           </div>
         </header>

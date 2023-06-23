@@ -1,22 +1,32 @@
-//실제 유튜브 연결 - 실제 유튜브 API를 가져올 수가 없음 (사용제한)
+//실제 유툽 연결 
 
-import axios from "axios";
+import axios from 'axios';
 
 export default class YoutubeClient {
-  constructor() {
+  constructor(){
     this.httpClient = axios.create({
-      baseURL: "https://youtube.googleapis.com/youtube/v3",
-      params: { key: process.env.REACT_APP_YOUTUBE_API_KEY },
-    });
+      baseURL :'https://youtube.googleapis.com/youtube/v3',
+      params:{key: process.env.REACT_APP_YOUTUBE_API_KEY}
+    })
   }
 
-  async search(prams) {
-    return this.httpClient.get("search", prams);
+  async search(params){
+    return this.httpClient
+      .get('search', params)
+    }
+
+  async videos(params){
+    return this.httpClient
+      .get('videos', params)
+    }
+  
+  async channels(params){
+    return this.httpClient
+      .get('channels', params)
+    } 
   }
-  async videos(prams) {
-    return this.httpClient.get("videos", prams);
-  }
-  async videos(prams) {
-    return this.httpClient.get("channers", prams);
-  }
-}
+
+
+
+
+
